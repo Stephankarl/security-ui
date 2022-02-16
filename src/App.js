@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useDispatch, useSelector } from 'react-redux'
+//Import Files
+import MasterBedroom from './components/MasterBedroom'
+//Import Functions
+import { loadHouseState } from './components/store/house'
+
+//Material UI
+import { Grid } from '@mui/material'
 
 function App() {
+  const dispatch = useDispatch()
+
+  dispatch(loadHouseState())
+
+  const loading = useSelector(state => state.house.loading)
+  if (loading)
+    return <div>Loading...</div>
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid container style={{ display: 'flex', justifyContent: 'center'}}>
+      <MasterBedroom />
+    </Grid>
   );
 }
 
