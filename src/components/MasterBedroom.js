@@ -14,10 +14,9 @@ export default function MasterBedroom() {
             <Typography variant='h3' align='center' my={3}>Master Bedroom</Typography>
             <Button variant='contained' 
                 fullWidth
-                // color={(!lights.masterBedroom.mainLight) ? 'error' : 'success'}
                 color='inherit'
-                style={ (!lights.masterBedroom.mainLight) ? { color: '#373543' } : { color: '#3cc194' }}
-                onClick={() => dispatch(lightSwitch('masterBedroom', 'mainLight'))}>{lights.masterBedroom.mainLight ? 'ON' : 'OFF' }
+                style={ (!lights.masterBedroom) ? { color: '#373543' } : { color: '#3cc194' }}
+                onClick={() => dispatch(lightSwitch('masterBedroom'))}>{lights.masterBedroom ? 'ON' : 'OFF' }
             </Button>
         </Grid>
     )

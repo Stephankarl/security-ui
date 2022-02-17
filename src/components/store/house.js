@@ -48,17 +48,14 @@ export const loadHouseState = () => (dispatch, getState) => {
     )
 }
 
-export const lightSwitch = (room, light) => (dispatch, getState) => {
-    const area = getState().house.list[room]
-    const globe = area[light] 
+export const lightSwitch = (light) => (dispatch, getState) => {
+    const globe = getState().house.list[light] 
     dispatch(
         apiCallBegan({
             url: '/',
             method: 'post',
             data: {
-                [room]: {
-                    [light]: !globe
-                }
+                [light]: !globe 
             },
             onSuccess: lightSwitchSuccess.type,
             onError: houseStateRequestFailed.type
